@@ -26,6 +26,6 @@ public class Cars {
     private String year;
 
     @Column(name = "fipe_value")
-    private Float fipe_value;
+    private Float fipeValue;
 
 }

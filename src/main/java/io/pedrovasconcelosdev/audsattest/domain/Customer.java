@@ -16,6 +16,9 @@ public class Customer {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "driver_id")
     private Drivers drivers;
