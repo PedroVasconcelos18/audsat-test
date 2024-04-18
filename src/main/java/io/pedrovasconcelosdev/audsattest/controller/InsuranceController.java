@@ -6,6 +6,7 @@ import io.pedrovasconcelosdev.audsattest.dto.InsuranceDTO;
 import io.pedrovasconcelosdev.audsattest.dto.InsuranceUpdatedDTO;
 import io.pedrovasconcelosdev.audsattest.dto.UpdateInsuranceDTO;
 import io.pedrovasconcelosdev.audsattest.service.InsuranceService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class InsuranceController {
     private final InsuranceService insuranceService;
 
     @PostMapping
-    public ResponseEntity<Void> createInsurance(@RequestBody CreateInsuranceDTO createInsuranceDTO,
+    public ResponseEntity<Void> createInsurance(@Valid @RequestBody CreateInsuranceDTO createInsuranceDTO,
                                                 UriComponentsBuilder uriComponentsBuilder) {
         Insurances insurance = insuranceService.createInsurance(createInsuranceDTO);
         UriComponents uriComponents =
