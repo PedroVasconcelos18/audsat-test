@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: Audsat API
+  version: 1.0.0
+paths:
+  /insurance/budget:
+    post:
+      summary: Create a new insurance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInsuranceDTO'
+      responses:
+        '201':
+          description: Insurance created
+  /insurance/budget/{id}:
+    get:
+      summary: Get insurance by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsuranceDTO'
+    put:
+      summary: Update an existing insurance
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInsuranceDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsuranceUpdatedDTO'
+    delete:
+      summary: Delete an insurance
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Insurance deleted
+components:
+  schemas:
+    CreateInsuranceDTO:
+      type: object
+      properties:
+        customerId:
+          type: integer
+        carId:
+          type: integer
+    UpdateInsuranceDTO:
+      type: object
+      properties:
+        customerId:
+          type: integer
+        carId:
+          type: integer
+        isActive:
+          type: boolean
+    InsuranceDTO:
+      type: object
+      properties:
+        carId:
+          type: integer
+        customerId:
+          type: integer
+        carModel:
+          type: string
+        customerName:
+          type: string
+        isActive:
+          type: boolean
+        fipePercentage:
+          type: string
+        budget:
+          type: string
+    InsuranceUpdatedDTO:
+      type: object
+      properties:
+        customerId:
+          type: integer
+        customerName:
+          type: string
+        carId:
+          type: integer
+        carModel:
+          type: string
+        isActive:
+          type: boolean
