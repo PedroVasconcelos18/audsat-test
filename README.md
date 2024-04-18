@@ -68,3 +68,37 @@ Tem que ser passado um id existente na URL e um body, contento os atributos de c
 #### DELETE /insurance/budget/{insuranceId}
 
 Tem que ser passado um id existente na URL.
+
+# Diagrama da arquitetura
+
+A arquitetura da aplicação está divida entre:
+
+- controller
+- domain
+- dto
+- exceptions
+- repository
+- service
+- utils
+
+### Controller:
+No projeto, os controllers são responsáveis por lidar com as solicitações HTTP. Eles mapeiam as solicitações para um serviço adequado. Por exemplo, o InsuranceController é um controller que gerencia as operações relacionadas aos seguros.  
+
+### Domain:
+ O domínio é onde os objetos de negócios ou entidades são definidos. Estes são os objetos que representam os conceitos do mundo real que o aplicativo gerencia. Por exemplo, Insurances é um objeto de domínio que representa um seguro.  
+
+### DTO (Data Transfer Object):
+DTOs são objetos simples que são usados para transportar dados entre processos. Eles são usados para agrupar vários dados em um único objeto para serem enviados em uma única chamada. Por exemplo, CreateInsuranceDTO, InsuranceDTO, InsuranceUpdatedDTO e UpdateInsuranceDTO são DTOs usados para transferir dados de e para o InsuranceController.  
+
+
+### Exceptions: 
+As exceções são usadas para indicar condições excepcionais que um aplicativo deve capturar. No projeto, podem ser definidas classes de exceção personalizadas para lidar com erros específicos.  
+
+### Repository: 
+Os repositórios são interfaces que permitem a manipulação de objetos de domínio. Eles fornecem operações como salvar, buscar, atualizar e deletar. Em uma aplicação Spring Boot, os repositórios geralmente estendem a interface JpaRepository ou CrudRepository.  
+
+### Service: 
+Os serviços contêm a lógica de negócios principal do aplicativo. Eles são chamados pelos controllers e podem chamar os repositórios para acessar os dados. Por exemplo, InsuranceService é um serviço que gerencia a lógica de negócios relacionada aos seguros.  
+
+### Utils:
+Utils são classes que contêm métodos estáticos que são comumente usados em toda a aplicação. Eles fornecem funcionalidades utilitárias como manipulação de strings, operações matemáticas, etc.
